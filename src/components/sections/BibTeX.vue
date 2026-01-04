@@ -3,11 +3,12 @@ export default {
   data() {
     return {
       bibtex: [
-        "@article{junyaohu2023template,",
-        "    title={Academic Project Page Template Vue},",
-        "    author={Hu, Junyao},",
-        "    journal={GitHub},",
-        "    year={2023}",
+        "@inproceedings{yourname2024yourtitle,",
+        "    title={Your Paper Title},",
+        "    author={Your Name and Coauthor Name},",
+        "    booktitle={Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},",
+        "    year={2024},",
+        "    organization={ACM}",
         "}",
       ],
     }
