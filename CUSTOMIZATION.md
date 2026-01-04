@@ -34,7 +34,7 @@ const title = 'Your KDD Paper Title Here'  // Replace with your actual title
 const authors = [
   {
     name: "Author Name 1",           // Your actual name
-    icon: "./icon/junyaohu.jpg",     // Your profile photo (add to public/icon/)
+    icon: "./icon/author1.jpg",      // Your profile photo (add to public/icon/)
     homepage: "https://yourwebsite.com/",  // Your homepage URL
     address_flag: "1,*"              // Institution number and symbols
   },
@@ -46,7 +46,7 @@ const addresses = [
   {
     address_flag: "1",
     name: "Your University",         // Your institution name
-    icon: "./icon/home.png",         // Institution logo (add to public/icon/)
+    icon: "./icon/university.png",   // Institution logo (add to public/icon/)
     homepage: "https://www.youruniversity.edu"  // Institution URL
   },
   // Add more institutions...

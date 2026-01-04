@@ -25,19 +25,19 @@ const btn_color = '#444444'
 const authors = [
   {
     name: "Author Name 1",
-    icon: "./icon/junyaohu.jpg",
+    icon: "./icon/author1.jpg",  // Add your photo to public/icon/ directory
     homepage: "https://yourwebsite.com/",
     address_flag: "1,*"
   },
   {
     name: "Author Name 2",
-    icon: "./icon/anya.jpg",
+    icon: "./icon/author2.jpg",  // Add your photo to public/icon/ directory
     homepage: "https://yourwebsite.com/",
     address_flag: "1,2"
   },
   {
     name: "Author Name 3",
-    icon: "./icon/capoo.webp",
+    icon: "./icon/author3.jpg",  // Add your photo to public/icon/ directory
     homepage: "https://yourwebsite.com/",
     address_flag: "2"
   },
@@ -48,13 +48,13 @@ const addresses = [
   {
     address_flag: "1",
     name: "Your University",
-    icon: "./icon/home.png",
+    icon: "./icon/university.png",  // Add institution logo to public/icon/ directory
     homepage: "https://www.youruniversity.edu"
   },
   {
     address_flag: "2",
     name: "Your Company",
-    icon: "./icon/ikun.avif",
+    icon: "./icon/company.png",  // Add company logo to public/icon/ directory
     homepage: "https://www.yourcompany.com"
   },
 ]

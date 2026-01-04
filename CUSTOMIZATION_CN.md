@@ -35,7 +35,7 @@ const title = 'Your KDD Paper Title Here'  // 改为您的实际标题
 const authors = [
   {
     name: "作者姓名1",                    // 您的真实姓名
-    icon: "./icon/junyaohu.jpg",        // 您的照片（放到 public/icon/ 目录）
+    icon: "./icon/author1.jpg",         // 您的照片（放到 public/icon/ 目录）
     homepage: "https://yourwebsite.com/", // 您的个人主页
     address_flag: "1,*"                  // 机构编号和符号
   },
@@ -47,7 +47,7 @@ const addresses = [
   {
     address_flag: "1",
     name: "您的大学",                     // 您的机构名称
-    icon: "./icon/home.png",            // 机构logo（放到 public/icon/）
+    icon: "./icon/university.png",      // 机构logo（放到 public/icon/）
     homepage: "https://www.youruniversity.edu"  // 机构网址
   },
   // 添加更多机构...
