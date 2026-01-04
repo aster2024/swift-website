@@ -64,11 +64,12 @@ const con_and_corresponding_author =
   "*: Corresponding Author."
 
 // 最新消息
-const news = "🔥 [2024] Accepted at KDD 2024!"
+const news = "🔥 Accepted at KDD 2024!"
 
-// 强调内容
+// 强调内容（可添加更多强调信息）
 const emphases = [
   "🎉 [KDD 2024] Research Track",
+  // Add more emphasis items here if needed
 ]
 
 // 提供引导资料链接
