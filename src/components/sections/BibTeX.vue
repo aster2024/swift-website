@@ -3,11 +3,14 @@ export default {
   data() {
     return {
       bibtex: [
-        "@article{junyaohu2023template,",
-        "    title={Academic Project Page Template Vue},",
-        "    author={Hu, Junyao},",
-        "    journal={GitHub},",
-        "    year={2023}",
+        "@misc{guo2025mining,",
+        "  title={Mining Intrinsic Rewards from LLM Hidden States for Efficient Best-of-N Sampling},",
+        "  author={Jizhou Guo and Zhaomin Wu and Hanchen Yang and Philip S. Yu},",
+        "  year={2025},",
+        "  eprint={2505.12225},",
+        "  archivePrefix={arXiv},",
+        "  primaryClass={cs.LG},",
+        "  url={https://arxiv.org/abs/2505.12225}",
         "}",
       ],
     }

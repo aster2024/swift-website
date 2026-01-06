@@ -1,53 +1,43 @@
-# Markdown (H1)
+# Overview
 
-The render result of `md.mdx` is here.
+**SWIFT** (*Simple Weighted Intrinsic Feedback Technique*) learns a reward function directly from a task-performing LLM’s **intrinsic signals** (hidden states or logits). This enables efficient **Best-of-$N$** selection without relying on a massive text-based reward model.
 
-## Good (H2)
+## Motivation
 
-### Nice (H3)
+Best-of-$N$ sampling is typically bottlenecked by conventional reward models:
 
-[**Diffusion models**](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) are a class of generative models in machine learning that have gained significant attention in recent years. 
+- **Massive**: often a fine-tuned LLM with billions of parameters.
+- **Costly**: training and inference are GPU-heavy.
+- **Data-hungry**: requires large-scale preference data.
 
-**Text-to-image diffusion models** have various application scenarios, including:
+SWIFT bypasses these issues by mining the task LLM’s own internal signals.
 
-- **Art & Design**: Used by artists for creative art and fashion designers to generate clothing renderings.
-- **Advertising & Marketing**: Helps in creating advertising posters and product promotion maps.
-- **Game & Film**: Applied in game scene and character design, as well as film and television concept design...
+## Method (high-level)
 
-> Thegeneral training steps of diffusion models are as follows:
+1. For each generated token, extract hidden states from selected transformer layers (or use final logits in logits-only mode).
+2. Feed token features into a lightweight linear reward model with an optional gating mechanism.
+3. Aggregate token-level scores into a single reward for each candidate response, then select the best candidate in Best-of-$N$.
 
-1. Data collection
-2. Noise addition
-3. Model building
-4. Training
-5. Evaluation
-6. Deployment
+## Key Features
 
+- **Extreme efficiency**: orders of magnitude smaller than LLM-based reward models.
+- **Strong performance**: competitive or better Best-of-$N$ accuracy on standard benchmarks.
+- **Data efficiency**: works well with only a few thousand training samples.
+- **Flexible signals**: supports hidden states (open models) and logits-only settings.
 
-```
-import torch 
+## Headline Results (MATH Best-of-$N$ @64)
 
-def denoise():
-    pass
-```
+| Reward Model        | Llama-3.2-3B | Llama-3.1-8B | Ministral-8B | Avg. |
+| ------------------- | ------------ | ------------ | ------------ | ---- |
+| Eurus-7B            | 46.8         | 52.2         | 55.0         | 51.0 |
+| Skywork-Llama3.1-8B | 48.8         | 53.4         | 61.6         | 52.9 |
+| Starling-7B         | 39.8         | 49.0         | 47.0         | 46.7 |
+| Ultra-13B           | 44.4         | 50.4         | 54.0         | 50.1 |
+| RLHFlow-8B-Deepseek | 47.6         | 49.8         | 57.8         | 51.1 |
+| Math-Shepherd-7B    | 43.6         | 49.0         | 54.8         | 49.8 |
+| **SWIFT (ours)**    | **53.6**     | **62.6**     | **62.8**     | **57.5** |
 
-* [ ] to do
-* [x] done
-* [x] ~114514~
+## Resources
 
-![](./logo_vision_aigc.png)
-
-Lift ($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following
-equation.
-
-$$
-L = \frac{1}{2} \rho v^2 S C_L
-$$
-
-
-### Table (H3)
-
-| a       | b       | c     |  d      |
-| -       | :-      | -:    | :-:     |
-| Alpha   | Bravo   | Alpha | Bravo   |
-| 中文    | Charlie | 👩‍❤️‍👩    | Delta   |
+- Paper (arXiv): https://arxiv.org/abs/2505.12225
+- Slides: https://docs.google.com/presentation/d/1MtUwGVC2xGDMu0b1TuJAujmfjxFn_TGt/edit?usp=sharing&ouid=101998927371723280988&rtpof=true&sd=true

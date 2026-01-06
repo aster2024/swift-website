@@ -1,31 +1,55 @@
 <script lang="ts" setup>
 
-// 表格数据
 const tableData = [
-{
-    model: 'Model A',
-    params: '10 B',
-    value_a: '123',
-    value_b: '321',
-},
-{
-    model: 'Model B',
-    params: '30 B',
-    value_a: '456',
-    value_b: '654',
-},
-{
-    model: 'Model C',
-    params: '20 B',
-    value_a: '789',
-    value_b: '987',
-},
-{
-    model: 'Model D',
-    params: '5 B',
-    value_a: '100',
-    value_b: '200',
-},
+    {
+        reward_model: 'Eurus-7B',
+        llama32_3b: 46.8,
+        llama31_8b: 52.2,
+        ministral_8b: 55.0,
+        avg: 51.0,
+    },
+    {
+        reward_model: 'Skywork-Llama3.1-8B',
+        llama32_3b: 48.8,
+        llama31_8b: 53.4,
+        ministral_8b: 61.6,
+        avg: 52.9,
+    },
+    {
+        reward_model: 'Starling-7B',
+        llama32_3b: 39.8,
+        llama31_8b: 49.0,
+        ministral_8b: 47.0,
+        avg: 46.7,
+    },
+    {
+        reward_model: 'Ultra-13B',
+        llama32_3b: 44.4,
+        llama31_8b: 50.4,
+        ministral_8b: 54.0,
+        avg: 50.1,
+    },
+    {
+        reward_model: 'RLHFlow-8B-Deepseek',
+        llama32_3b: 47.6,
+        llama31_8b: 49.8,
+        ministral_8b: 57.8,
+        avg: 51.1,
+    },
+    {
+        reward_model: 'Math-Shepherd-7B',
+        llama32_3b: 43.6,
+        llama31_8b: 49.0,
+        ministral_8b: 54.8,
+        avg: 49.8,
+    },
+    {
+        reward_model: 'SWIFT (ours)',
+        llama32_3b: 53.6,
+        llama31_8b: 62.6,
+        ministral_8b: 62.8,
+        avg: 57.5,
+    },
 ]
 </script>
 
@@ -34,7 +58,7 @@ const tableData = [
         <el-divider />
 
         <el-row justify="center">
-            <h1 class="section-title">More Results</h1>
+            <h1 class="section-title">Results (MATH Best-of-N @64)</h1>
         </el-row>
         
         <!-- 数据表格 -->
@@ -44,37 +68,17 @@ const tableData = [
                 <!-- 卡片 -->
                 <el-card class="card">
 
-                    <!-- 默认tab -->
-                    <el-tabs class="demo-tabs" model-value="Method A">
-
-                    <!-- 第一个tab -->
-                    <el-tab-pane label="Method A" name="Method A">
-
-                        <!-- 表格数据 -->
-                        <el-table 
-                            :data="tableData"
-                            :default-sort="{ prop: 'value_b', order: 'descending' }"
-                            scrollbar-always-on
-                        >
-                            <el-table-column prop="model" label="Model" width="100" sortable/>
-                            <el-table-column prop="params" label="#Params" min-width="120" sortable/>
-                            <el-table-column prop="value_a" label="Value A" min-width="120" sortable/>
-                            <el-table-column prop="value_b" label="Value B" min-width="120" sortable/>
-                        </el-table>
-                    </el-tab-pane>
-
-                    <el-tab-pane label="Method B" name="Method B">
-                        Method B
-                    </el-tab-pane>
-
-                    <el-tab-pane label="Method C" name="Method C">
-                        Method C
-                    </el-tab-pane>
-
-                    <el-tab-pane label="Method D" name="Method D">
-                        Method D
-                    </el-tab-pane>
-                    </el-tabs>
+                    <el-table
+                        :data="tableData"
+                        :default-sort="{ prop: 'avg', order: 'descending' }"
+                        scrollbar-always-on
+                    >
+                        <el-table-column prop="reward_model" label="Reward Model" min-width="220" sortable />
+                        <el-table-column prop="llama32_3b" label="Llama-3.2-3B" min-width="140" sortable />
+                        <el-table-column prop="llama31_8b" label="Llama-3.1-8B" min-width="140" sortable />
+                        <el-table-column prop="ministral_8b" label="Ministral-8B" min-width="140" sortable />
+                        <el-table-column prop="avg" label="Avg." min-width="100" sortable />
+                    </el-table>
 
                 </el-card>
             </el-col>

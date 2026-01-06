@@ -1,34 +1,36 @@
 <script lang="ts" setup>
 
 import { ElIcon } from 'element-plus'
-import { HomeFilled, SuccessFilled } from '@element-plus/icons-vue'
+import { HomeFilled, Document, Link } from '@element-plus/icons-vue'
 
-// 个人主页
-const home = {
-    name: "My Blog",
-    link: "https://junyaohu.github.io/",
-}
+const baseUrl = import.meta.env.BASE_URL
 
-// 项目主页
-const logo = {
-    name: "Template",
-    link: "#",
-}
-
-// 右侧更多菜单
-const more_paper = {
-    "ExtDM": {
-        name: "ExtDM - CVPR 2024",
-        link: "https://zzcheng.top/ExtDM/",
+const nav = {
+    homepage: {
+        name: "Homepage",
+        link: "https://aster2024.github.io/",
+        icon: HomeFilled,
     },
-    "MPOT": {
-        name: "MPOT - ICCV 2023",
-        link: "https://zzcheng.top/MPOT/",
+    home: {
+        name: "SWIFT",
+        link: baseUrl,
+        icon: Link,
     },
-    "ControlNet": {
-        name: "ControlNet - ICCV 2023",
-        link: "https://github.com/lllyasviel/ControlNet",
-    }
+    pdf: {
+        name: "PDF",
+        link: `${baseUrl}paper.pdf`,
+        icon: Document,
+    },
+    arxiv: {
+        name: "arXiv",
+        link: "https://arxiv.org/abs/2505.12225",
+        icon: Link,
+    },
+    slides: {
+        name: "Slides",
+        link: "https://docs.google.com/presentation/d/1MtUwGVC2xGDMu0b1TuJAujmfjxFn_TGt/edit?usp=sharing&ouid=101998927371723280988&rtpof=true&sd=true",
+        icon: Link,
+    },
 }
 
 </script>
@@ -44,31 +46,30 @@ const more_paper = {
         mode="horizontal"
         :ellipsis="false"
     >
-        <!-- 个人主页 -->
         <el-menu-item index="0" >
-            <el-icon :size="20"><HomeFilled /></el-icon>
-            <a :href=home.link>{{ home.name }} </a>
-        </el-menu-item>
-        
-        <!-- 项目主页 -->
-        <el-menu-item index="1">
-            <el-icon :size="20"><SuccessFilled /></el-icon>
-            <a :href=logo.link>{{ logo.name }} </a>
+            <el-icon :size="20"><component :is="nav.homepage.icon" /></el-icon>
+            <a :href=nav.homepage.link target="_blank" rel="noopener">{{ nav.homepage.name }} </a>
         </el-menu-item>
 
-        <!-- 更多栏目 -->
-        <el-sub-menu index="2">
-            <template #title>More</template>
-            <el-menu-item index="2-1">
-                <a :href=more_paper.ExtDM.link>{{ more_paper.ExtDM.name }}</a>
-            </el-menu-item>
-            <el-menu-item index="2-2">
-                <a :href=more_paper.MPOT.link>{{ more_paper.MPOT.name }}</a>
-            </el-menu-item>
-            <el-menu-item index="2-3">
-                <a :href=more_paper.ControlNet.link>{{ more_paper.ControlNet.name }}</a>
-            </el-menu-item>
-        </el-sub-menu>
+        <el-menu-item index="1">
+            <el-icon :size="20"><component :is="nav.home.icon" /></el-icon>
+            <a :href=nav.home.link>{{ nav.home.name }} </a>
+        </el-menu-item>
+
+        <el-menu-item index="2">
+            <el-icon :size="20"><component :is="nav.pdf.icon" /></el-icon>
+            <a :href=nav.pdf.link target="_blank" rel="noopener">{{ nav.pdf.name }} </a>
+        </el-menu-item>
+
+        <el-menu-item index="3">
+            <el-icon :size="20"><component :is="nav.arxiv.icon" /></el-icon>
+            <a :href=nav.arxiv.link target="_blank" rel="noopener">{{ nav.arxiv.name }} </a>
+        </el-menu-item>
+
+        <el-menu-item index="4">
+            <el-icon :size="20"><component :is="nav.slides.icon" /></el-icon>
+            <a :href=nav.slides.link target="_blank" rel="noopener">{{ nav.slides.name }} </a>
+        </el-menu-item>
 
     </el-menu>
     </el-affix>
@@ -103,7 +104,7 @@ const more_paper = {
 <style scoped>
 
 /* 水平导航左右分区 */
-.el-menu--horizontal > .el-menu-item:nth-child(2) {
+.el-menu--horizontal > .el-menu-item:nth-child(1) {
     margin-right: auto;
 }
 
