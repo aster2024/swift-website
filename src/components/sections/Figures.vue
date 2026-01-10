@@ -53,12 +53,17 @@ export default {
         >
           <swiper-slide v-for="fig in figures" :key="fig.src">
             <el-card class="card">
-              <el-image :src="fig.src" fit="contain" class="figure" />
+              <el-image :src="fig.src" fit="contain" class="figure">
+                <template #error>
+                  <div class="image-error">
+                    <div class="hint">
+                      图片加载失败：请把截图文件放到 <code>public/figures/</code>，并命名为
+                      <code>overall_illustration.png</code>/<code>efficiency.png</code>/<code>main_results.png</code>
+                    </div>
+                  </div>
+                </template>
+              </el-image>
               <div class="caption">{{ fig.caption }}</div>
-              <div class="hint">
-                如果这里显示空白/裂图，把截图文件放到 <code>public/figures/</code> 并命名为
-                <code>overall_illustration.png</code>/<code>efficiency.png</code>/<code>main_results.png</code>
-              </div>
             </el-card>
           </swiper-slide>
         </swiper>
@@ -80,6 +85,14 @@ export default {
   text-align: center;
   margin-top: 12px;
   color: var(--el-text-color-primary);
+}
+
+.image-error {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hint {
